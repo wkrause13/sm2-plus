@@ -14,7 +14,7 @@ const limitNumber = (number, min, max) => {
 };
 
 const getPercentOverdue = (word, today) => {
-  const calculated = (today - word.update) / word.interval;
+  const calculated = (today - word.updated) / word.interval;
   return calculated > 2 ? 2 : calculated;
 };
 
@@ -36,7 +36,7 @@ const calculate = (word, performanceRating, today) => {
     difficulty,
     interval,
     dueDate: today + interval,
-    update: today,
+    updated: today,
     word: word.word,
   };
 };
@@ -46,7 +46,7 @@ const TODAY = 1000000;
 const initialRecord = {
     interval: 1,
     dueDate: TODAY,
-    update: TODAY - 1,
+    updated: TODAY - 1,
   };
 
 const simulate = (difficulty, thrashHold) => {
@@ -54,7 +54,7 @@ const simulate = (difficulty, thrashHold) => {
           ...initialRecord,
           difficulty,
           dueDate: TODAY,
-          update: TODAY - 1,
+          updated: TODAY - 1,
         };
     let index = 1;
     let day;
